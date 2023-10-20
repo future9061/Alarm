@@ -1,0 +1,23 @@
+.CurrentTime {
+  width: 85%;
+  padding: 50px;
+
+  > .inner {
+    height: 100%;
+    background-color: #fff;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    letter-spacing: 3px;
+
+    h3 {
+      font-size: 2em;
+    }
+    > * {
+      margin: 5px;
+    }
+  }
+}
