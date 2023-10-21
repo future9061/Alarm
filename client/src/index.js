@@ -9,6 +9,12 @@ import {
 import App from "./App"
 import CurrentTime from './components/CurrentTime/CurrentTime';
 import Alarm from './components/Alarm/Alarm';
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+
+const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
   {
@@ -30,7 +36,10 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <RouterProvider router={router} />
+  <QueryClientProvider client={queryClient}>
+    <RouterProvider router={router} />
+  </QueryClientProvider>
+
 );
 
 

@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../../style/CurrentTime/CurrentTimeCSS.scss";
+import { useQueryClient } from "@tanstack/react-query";
 
 function CurrentTime() {
+  const cache = useQueryClient();
+  useEffect(() => {
+    console.log(cache);
+  }, []);
+
   return (
     <div className="CurrentTime">
       <div className="inner">
