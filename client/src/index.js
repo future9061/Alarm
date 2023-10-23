@@ -13,6 +13,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
+import Timer from './components/Timer/Timer';
 
 const queryClient = new QueryClient()
 
@@ -29,6 +30,9 @@ const router = createBrowserRouter([
       {
         path: "/alarm",
         element: <Alarm />,
+      }, {
+        path: "/timer",
+        element: <Timer />,
       }
     ],
   },

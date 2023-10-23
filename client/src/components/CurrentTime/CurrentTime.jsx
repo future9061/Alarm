@@ -18,7 +18,7 @@ function CurrentTime() {
   const { data } = useQuery({
     queryKey: ["currentTime"],
     queryFn: () => fetchTime(),
-    refetchInterval: 1000,
+    refetchInterval: 500,
     staletime: 1000,
     cachetime: 1000,
   });
@@ -31,7 +31,7 @@ function CurrentTime() {
       <div className="inner">
         <h3>현재시각</h3>
         <p>{today}</p>
-        <small>{time}</small>
+        <span>{time}</span>
       </div>
     </div>
   );

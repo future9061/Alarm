@@ -3,14 +3,20 @@ import "../../style/Menu/MenuCSS.scss";
 
 import List from "./List";
 import MenuData from "./MenuData";
+import Footer from "../Footer";
 
 function Menu() {
   const data = [...MenuData];
 
   return (
-    <ul className="Menu">
-      <List data={data} />
-    </ul>
+    <nav className="Menu">
+      <ul>
+        <List data={data} />
+      </ul>
+      <ul className="Footer">
+        <Footer />
+      </ul>
+    </nav>
   );
 }
 
