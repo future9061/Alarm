@@ -12,6 +12,11 @@
     display: flex;
     justify-content: center;
     gap: 15px;
+    > .err {
+      position: absolute;
+      bottom: 25%;
+      color: #f0565d;
+    }
 
     > :nth-child(1) {
       text-wrap: nowrap;
@@ -67,6 +72,7 @@
       }
     }
   }
+
   > .buttons {
     position: absolute;
     top: 70%;

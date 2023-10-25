@@ -1,13 +1,13 @@
 import React from "react";
-import Input from "./Input";
+import InputWrap from "./InputWrap";
 import "../../style/Alarm/AlarmCSS.scss";
 import List from "./List";
 
-//통신은 여기서
+//useQuery로 조건 달아서 서버에 통신을 요청한다.
 function Alarm() {
   return (
     <div className="Alarm">
-      <Input />
+      <InputWrap />
       <List />
     </div>
   );
