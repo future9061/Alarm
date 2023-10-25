@@ -1,10 +1,8 @@
 import React from "react";
 import "../style/FooterCSS.scss";
 import { BiCodeAlt, BiLogoGithub } from "react-icons/bi";
-import { useNavigate } from "react-router-dom";
 
 function Footer() {
-  const navigate = useNavigate();
   const URL = [
     {
       title: "code",

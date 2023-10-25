@@ -13,9 +13,9 @@ const MenuData = [
     path: "/alarm"
   },
   {
-    title: "타이머",
+    title: "스톱워치",
     icon: <IoIosTimer />,
-    path: "/timer"
+    path: "/stopwatch"
   }
 ]
 
