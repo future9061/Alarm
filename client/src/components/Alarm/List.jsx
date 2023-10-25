@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useCallback, useEffect, useMemo } from "react";
 import "../../style/Alarm/ListCSS.scss";
 
 function List(props) {
   //랜더링 시 로컬에 저장된 알람 배열을 가져와서 알람 리스트를 보여준다
+
+  const data = useMemo(() => {}, []);
+
+  const fetchDate = useCallback(() => {}, []);
   return (
     <ul className="List">
       <li>

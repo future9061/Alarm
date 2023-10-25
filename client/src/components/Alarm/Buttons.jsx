@@ -29,15 +29,21 @@ function Buttons({ hours, minutes, digit }) {
 
     const data = JSON.parse(alarm);
 
-    data.some((a) => {
+    const overlapping = data.some((a) => {
       a = String(a).slice(0, 8);
       const time = String(timeStamp).slice(0, 8);
       if (a === time) {
-        alert("이미 설정한 시간입니다");
-        window.location.reload();
-        return;
+        return true;
+      } else {
+        return false;
       }
     });
+
+    if (overlapping) {
+      alert("이미 설정한 시간입니다.");
+      window.location.reload();
+      return;
+    }
 
     data.push(timeStamp);
 
