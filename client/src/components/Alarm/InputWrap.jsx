@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../../style/Alarm/InputCSS.scss";
 import Input from "./Input";
 import Select from "./Select";
 import Buttons from "./Buttons";
 
-//만약 선택한 시간이 현재 시간보다 이르면 return
 function InputWrap() {
   const [digit, setDigit] = useState("am");
   const [hours, setHours] = useState();

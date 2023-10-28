@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import InputWrap from "./InputWrap";
 import "../../style/Alarm/AlarmCSS.scss";
 import List from "./List";

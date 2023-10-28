@@ -2,17 +2,20 @@ import React from "react";
 
 function Buttons({ hours, minutes, digit }) {
   const alarmTime = new Date();
-  let alarm = window.localStorage.getItem("alarm") || "[]";
+  const alarm = window.localStorage.getItem("alarm") || "[]";
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (digit === "pm") {
+    if (digit === "pm" && hours !== 12) {
+      hours += 12;
+    } else if (digit === "am" && hours === 12) {
       hours += 12;
     }
 
     alarmTime.setHours(hours);
     alarmTime.setMinutes(minutes);
+
     const timeStamp = alarmTime.getTime();
     const now = new Date().getTime();
 

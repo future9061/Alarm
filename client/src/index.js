@@ -13,7 +13,6 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
-import Timer from './components/StopWatch/StopWatch';
 import StopWatch from './components/StopWatch/StopWatch';
 
 const queryClient = new QueryClient()
@@ -44,7 +43,6 @@ root.render(
   <QueryClientProvider client={queryClient}>
     <RouterProvider router={router} />
   </QueryClientProvider>
-
 );
 
 

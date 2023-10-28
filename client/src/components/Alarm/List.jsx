@@ -1,24 +1,43 @@
-import React, { useCallback, useEffect, useMemo } from "react";
+import React from "react";
 import "../../style/Alarm/ListCSS.scss";
+import Delete from "./Delete";
 
-function List(props) {
-  //랜더링 시 로컬에 저장된 알람 배열을 가져와서 알람 리스트를 보여준다
+function List() {
+  const data = localStorage.getItem("alarm") || "[]";
 
-  const data = useMemo(() => {}, []);
+  let json = JSON.parse(data);
+  json.sort((a, b) => a - b);
 
-  const fetchDate = useCallback(() => {}, []);
   return (
     <ul className="List">
-      <li>
-        <h3>알람</h3>
-        <div>
-          <span>오전</span>
-          <p>09:30</p>
-        </div>
-        <div className="buttons">
-          <div></div>
-        </div>
-      </li>
+      {json ? (
+        json.map((a, i) => {
+          const date = new Date(a);
+          const obj = {
+            year: new Date(a).getFullYear(),
+            month: ("0" + (date.getMonth() + 1)).slice(-2),
+            day: ("0" + date.getDate()).slice(-2),
+            hours: ("0" + date.getHours()).slice(-2),
+            minutes: ("0" + date.getMinutes()).slice(-2),
+          };
+
+          return (
+            <li key={i}>
+              <h3>⏰알람</h3>
+              <div>
+                <span>{`${obj.year}년 ${obj.month}월 ${obj.day}일`}</span>
+              </div>
+              <div>
+                <span>{obj.hours >= 12 ? "오후" : "오전"}</span>
+                <p>{`${obj.hours} : ${obj.minutes}`}</p>
+              </div>
+              <Delete />
+            </li>
+          );
+        })
+      ) : (
+        <li>알람을 맞춰주세요🌝</li>
+      )}
     </ul>
   );
 }
