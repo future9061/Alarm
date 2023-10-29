@@ -1,7 +1,6 @@
 import React from "react";
 import "../../style/Alarm/ListCSS.scss";
 
-//클릭하면 해당 데이터 찾아서 삭제하고 다시 로컬로 이번엔 리듀서로 해볼까?
 function Delete({ a, filterData }) {
   const handleDelete = (e) => {
     const updateData = [];
