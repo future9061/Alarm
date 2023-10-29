@@ -3,15 +3,20 @@ import "../../style/Alarm/ListCSS.scss";
 import Delete from "./Delete";
 
 function List() {
-  const data = localStorage.getItem("alarm") || "[]";
+  const data = JSON.parse(localStorage.getItem("alarm")) || [];
 
-  let json = JSON.parse(data);
-  json.sort((a, b) => a - b);
+  //localStorage 데이터 이미 지난시간 삭제, 시간순으로 정렬해서 다시 스토리지에 저장. 내일 확인해봐
+  const now = new Date().getTime();
+  const filterData = [];
+  data.filter((a) => a > now && filterData.push(a));
+  filterData.sort((a, b) => a - b);
+  const copy = JSON.stringify([...filterData]);
+  localStorage.setItem("alarm", copy);
 
   return (
     <ul className="List">
-      {json ? (
-        json.map((a, i) => {
+      {filterData ? (
+        filterData.map((a, i) => {
           const date = new Date(a);
           const obj = {
             year: new Date(a).getFullYear(),
@@ -31,7 +36,7 @@ function List() {
                 <span>{obj.hours >= 12 ? "오후" : "오전"}</span>
                 <p>{`${obj.hours} : ${obj.minutes}`}</p>
               </div>
-              <Delete />
+              <Delete a={a} filterData={filterData} />
             </li>
           );
         })
