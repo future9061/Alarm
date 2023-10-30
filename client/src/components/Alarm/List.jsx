@@ -5,7 +5,6 @@ import Delete from "./Delete";
 function List() {
   const data = JSON.parse(localStorage.getItem("alarm")) || [];
 
-  //localStorage 데이터 이미 지난시간 삭제, 시간순으로 정렬해서 다시 스토리지에 저장. 내일 확인해봐
   const now = new Date().getTime();
   const filterData = [];
   data.filter((a) => a > now && filterData.push(a));

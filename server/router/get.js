@@ -19,13 +19,23 @@ router.get("/time", (req, res) => {
 })
 
 router.get("/alarm", (req, res) => {
-  const client = String(req.query.data).slice(0, -5) + "00000"
-  const server = String(new Date().getTime()).slice(0, -5) + "00000"
 
-  if (client === server) {
-    res.status(200).send({ success: true, alarm: server })
+  //딜레이 20s
+
+  const date = new Date(Number(req.query.data))
+  const reqTime = {
+    hours: date.getHours(),
+    minutes: date.getMinutes()
   }
 
+
+  console.log("통신 했다", reqTime.hours, reqTime.minutes)
+
+  res.status(200).send({ success: true })
+
 })
+
+
+
 
 module.exports = router

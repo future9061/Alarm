@@ -5,27 +5,29 @@ import List from "./List";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import Modal from "./Modal";
-//useQuery로 조건 달아서 서버에 통신을 요청한다.
-//local에 있는 알람 리스트 가져와서
-//해당 알람시간과 현재 알람시간을 빼
-//뺀 시간만큼 시간이 지나면 통신해야하는데
-//localStorage 데이터 만큼 map 돌려야해
 
 function Alarm() {
   const [synch, setSynch] = useState(false);
+
   const localData = JSON.parse(localStorage.getItem("alarm")) || [];
 
-  localData.map((a) => {
-    const now = new Date().getTime();
-    const time1 = String(a).slice(0, -5) + "00000";
-    const timing = Number(time1) - now;
+  useEffect(() => {
+    const timing = [];
+    localData.map((a, i) => {
+      const date = new Date();
+      date.setSeconds(0);
+      const now = date.getTime();
+      timing.push(a - now);
+      timing.sort((a, b) => a - b);
 
-    if (a > now) {
-      setTimeout(() => {
-        setSynch(true);
-      }, timing);
-    }
-  });
+      if (a > now && localData.length !== 0) {
+        setTimeout(() => {
+          setSynch(true);
+          timing.shift();
+        }, Number(timing[0]));
+      }
+    });
+  }, [localData]);
 
   const fetchAlarm = async () => {
     const data = localData[0];
@@ -33,7 +35,10 @@ function Alarm() {
       .get("/api/alarm", { params: { data } })
       .then((res) => {
         if (res.data.success) {
-          return res.data.alarm;
+          setSynch(false);
+          const updateLocal = localData.slice(1, localData.length);
+          localStorage.setItem("alarm", JSON.stringify(updateLocal));
+          return res.data;
         }
       })
       .catch((err) => console.log(err));
@@ -47,7 +52,7 @@ function Alarm() {
 
   return (
     <div className="Alarm">
-      <Modal />
+      {/* <Modal modalTogg={modalTogg} setModaltogg={setModaltogg} data={data}/> */}
       <InputWrap />
       <List />
     </div>
