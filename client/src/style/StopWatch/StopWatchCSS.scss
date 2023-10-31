@@ -1,4 +1,14 @@
 .StopWatch {
   width: 85%;
   padding: 50px;
+
+  > .buttons {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+  }
+
+  > .stopwatchList {
+    padding: 20px 70px;
+  }
 }

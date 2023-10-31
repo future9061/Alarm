@@ -7,12 +7,12 @@ router.get("/time", (req, res) => {
 
   const timeData = {
     timestamp: timestamp,
-    year: date.getFullYear().toString(),
-    month: (date.getMonth() + 1).toString(),
-    day: date.getDate().toString(),
-    hour: date.getHours().toString(),
-    minute: date.getMinutes().toString(),
-    second: date.getSeconds().toString()
+    year: date.getFullYear().toString().slice(-2),
+    month: ("0" + (date.getMonth() + 1)).slice(-2),
+    day: ("0" + date.getDate()).slice(-2),
+    hour: ("0" + date.getHours()).slice(-2),
+    minute: ("0" + date.getMinutes()).slice(-2),
+    second: ("0" + date.getSeconds()).slice(-2)
   }
 
   res.status(200).send({ success: true, time: timeData })
@@ -20,18 +20,22 @@ router.get("/time", (req, res) => {
 
 router.get("/alarm", (req, res) => {
 
-  //딜레이 20s
-
-  const date = new Date(Number(req.query.data))
+  const clientDate = new Date(Number(req.query.data))
   const reqTime = {
-    hours: date.getHours(),
-    minutes: date.getMinutes()
+    hours: ("0" + clientDate.getHours()).slice(-2),
+    minute: ("0" + clientDate.getMinutes()).slice(-2),
+  }
+
+  const serverDate = new Date()
+  const resTime = {
+    hours: ("0" + serverDate.getHours()).slice(-2),
+    minute: ("0" + serverDate.getMinutes()).slice(-2),
   }
 
 
-  console.log("통신 했다", reqTime.hours, reqTime.minutes)
-
-  res.status(200).send({ success: true })
+  if (resTime.hours === reqTime.hours && resTime.minutes === reqTime.minutes) {
+    res.status(200).send({ success: true, alarm: resTime })
+  }
 
 })
 

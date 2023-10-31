@@ -7,15 +7,14 @@ import { useQuery } from "@tanstack/react-query";
 import Modal from "./Modal";
 
 function Alarm() {
-  const [synch, setSynch] = useState(false);
-
+  const [synch, setSynch] = useState(false); //useQuery enabled 토글
+  const [modalTogg, setModaltogg] = useState(false);
   const localData = JSON.parse(localStorage.getItem("alarm")) || [];
 
   useEffect(() => {
     const timing = [];
-    localData.map((a, i) => {
+    localData.map((a) => {
       const date = new Date();
-      date.setSeconds(0);
       const now = date.getTime();
       timing.push(a - now);
       timing.sort((a, b) => a - b);
@@ -36,6 +35,7 @@ function Alarm() {
       .then((res) => {
         if (res.data.success) {
           setSynch(false);
+          setModaltogg(true);
           const updateLocal = localData.slice(1, localData.length);
           localStorage.setItem("alarm", JSON.stringify(updateLocal));
           return res.data;
@@ -44,7 +44,7 @@ function Alarm() {
       .catch((err) => console.log(err));
   };
 
-  const { data, onSuccess } = useQuery({
+  const { data } = useQuery({
     queryKey: ["alarmKey"],
     queryFn: () => fetchAlarm(),
     enabled: synch,
@@ -52,9 +52,15 @@ function Alarm() {
 
   return (
     <div className="Alarm">
-      {/* <Modal modalTogg={modalTogg} setModaltogg={setModaltogg} data={data}/> */}
+      {modalTogg && (
+        <Modal
+          setModaltogg={setModaltogg}
+          modalTogg={modalTogg}
+          data={data.alarm}
+        />
+      )}
       <InputWrap />
-      <List />
+      <List modalTogg={modalTogg} />
     </div>
   );
 }

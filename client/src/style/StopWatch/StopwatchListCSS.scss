@@ -1,0 +1,8 @@
+.item {
+  border: 1px solid red;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  &:nth-child(1) {
+  }
+}

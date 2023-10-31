@@ -9,7 +9,7 @@ function Buttons({ hours, minutes, digit }) {
     if (digit === "pm" && hours !== 12) {
       hours += 12;
     } else if (digit === "am" && hours === 12) {
-      hours = 0;
+      hours = 24;
     }
     const date = new Date();
     date.setHours(hours);

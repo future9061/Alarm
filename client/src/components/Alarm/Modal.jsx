@@ -2,15 +2,26 @@ import React from "react";
 import "../../style/Alarm/ModalCSS.scss";
 import { AiOutlineClose } from "react-icons/ai";
 
-//모달 관리하는 state
-//close 클릭 시 false
-//통신 성공시 받아온 데이터 바인딩 해서 true
-function Modal(props) {
+function Modal({ modalTogg, setModaltogg, data }) {
+  modalTogg &&
+    setTimeout(() => {
+      setModaltogg(false);
+    }, 30000);
+
   return (
     <div className="Modal">
-      <AiOutlineClose className="close" />
+      <AiOutlineClose
+        className="close"
+        onClick={() => {
+          setModaltogg(false);
+        }}
+      />
       <div className="inner">
-        <p>시간이 되었습니다!</p>
+        <h3>⏰</h3>
+        <p>
+          <span>{data.hours}</span>시 <span>{data.minute}</span>분이 되었습니다!
+        </p>
+        <p>해당 알림은 30초뒤 자동으로 사라져요!</p>
       </div>
     </div>
   );

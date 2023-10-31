@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../../style/Alarm/ListCSS.scss";
 import Delete from "./Delete";
 
-function List() {
-  const data = JSON.parse(localStorage.getItem("alarm")) || [];
+function List({ modalTogg }) {
+  let data = JSON.parse(localStorage.getItem("alarm")) || [];
+  useEffect(() => {
+    data = JSON.parse(localStorage.getItem("alarm")) || [];
+  }, [modalTogg]);
 
   const now = new Date().getTime();
   const filterData = [];
