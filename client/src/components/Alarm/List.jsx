@@ -43,7 +43,7 @@ function List({ modalTogg }) {
           );
         })
       ) : (
-        <li>알람을 맞춰주세요🌝</li>
+        <div className="smile">알람을 맞춰주세요🌝</div>
       )}
     </ul>
   );
