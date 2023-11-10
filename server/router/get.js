@@ -36,10 +36,17 @@ router.get("/alarm", (req, res) => {
   if (resTime.hours === reqTime.hours && resTime.minutes === reqTime.minutes) {
     res.status(200).send({ success: true, alarm: resTime })
   }
-
 })
 
+router.get("/stopwatch", async (req, res) => {
 
+  let milliSecond = Number(req.query.milliSecond)
 
+  if (!isNaN(milliSecond)) {
+    milliSecond += 1;
+  }
+
+  res.status(200).send({ success: true, milliSecond: milliSecond })
+})
 
 module.exports = router

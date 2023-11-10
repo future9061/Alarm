@@ -1,7 +1,48 @@
-> button {
-  border: 1px solid red;
+.stopwatch-btn {
   font-size: 1.5em;
   width: 3em;
   height: 3em;
   border-radius: 50%;
+
+  &:nth-child(1) {
+    background-color: #14ae5c;
+    color: white;
+    transition: 0.1s;
+
+    &:hover {
+      background-color: #118b4a;
+    }
+    &:active {
+      background-color: #118b4a;
+      transform: scale(1.05);
+    }
+  }
+
+  &:nth-child(2) {
+    background-color: #f59a92;
+    color: white;
+    transition: 0.1s;
+
+    &:hover {
+      background-color: #f87b70;
+    }
+    &:active {
+      background-color: #f59a92;
+      transform: scale(1.05);
+    }
+  }
+
+  &:nth-child(3) {
+    background-color: #0d99ff;
+    color: white;
+    transition: 0.1s;
+
+    &:hover {
+      background-color: #0e7dcc;
+    }
+    &:active {
+      background-color: #0e7dcc;
+      transform: scale(1.05);
+    }
+  }
 }

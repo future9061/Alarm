@@ -17,7 +17,7 @@ function List({ modalTogg }) {
 
   return (
     <ul className="List">
-      {filterData ? (
+      {filterData.length !== 0 ? (
         filterData.map((a, i) => {
           const date = new Date(a);
           const obj = {
