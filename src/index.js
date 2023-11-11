@@ -15,7 +15,9 @@ import {
 } from '@tanstack/react-query'
 import StopWatch from './components/StopWatch/StopWatch';
 
+
 const queryClient = new QueryClient()
+
 
 const router = createBrowserRouter([
   {
@@ -47,3 +49,4 @@ root.render(
 
 
 reportWebVitals();
+

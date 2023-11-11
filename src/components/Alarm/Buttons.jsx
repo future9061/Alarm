@@ -34,7 +34,6 @@ function Buttons({ hours, minutes, digit }) {
 
     const overlapping = data.some((a, i) => {
       const localTime = new Date(a);
-
       const userTime = new Date(timestamp);
 
       if (

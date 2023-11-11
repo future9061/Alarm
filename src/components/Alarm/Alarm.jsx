@@ -18,20 +18,20 @@ function Alarm() {
       const now = date.getTime();
       timing.push(a - now);
       timing.sort((a, b) => a - b);
-
-      if (a > now && localData.length !== 0) {
+      console.log(timing, synch);
+      if (localData.length !== 0) {
         setTimeout(() => {
           setSynch(true);
           timing.shift();
         }, Number(timing[0]));
       }
     });
-  }, [localData]);
+  }, []);
 
   const fetchAlarm = async () => {
     const data = localData[0];
     return await axios
-      .get("/api/alarm", { params: { data } })
+      .get("/api/alram/modal", { params: { data } })
       .then((res) => {
         if (res.data.success) {
           setSynch(false);

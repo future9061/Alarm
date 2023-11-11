@@ -10,9 +10,10 @@ client/node_modules
 client/build
 client/.env
 
-package.json
+
 package-lock.json
 node_modules
+build
 
 .env
 .env.local
