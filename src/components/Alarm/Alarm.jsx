@@ -31,7 +31,7 @@ function Alarm() {
   const fetchAlarm = async () => {
     const data = localData[0];
     return await axios
-      .get("/api/alram/modal", { params: { data } })
+      .get("/api/alarm/modal", { params: { data } })
       .then((res) => {
         if (res.data.success) {
           setSynch(false);

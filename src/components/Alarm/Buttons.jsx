@@ -1,7 +1,7 @@
 import React from "react";
 
 function Buttons({ hours, minutes, digit }) {
-  const alarm = window.localStorage.getItem("alarm") || "[]"; //시간 데이터 필터링 용도
+  const alarm = window.localStorage.getItem("alarm") || "[]";
 
   const handleSubmit = (e) => {
     e.preventDefault();
