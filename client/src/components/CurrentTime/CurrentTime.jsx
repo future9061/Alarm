@@ -6,7 +6,7 @@ import axios from "axios";
 function CurrentTime() {
   const fetchTime = async () => {
     return await axios
-      .get("/api/time")
+      .get("/api/time/current")
       .then((res) => {
         if (res.data.success) {
           return res.data.time;
