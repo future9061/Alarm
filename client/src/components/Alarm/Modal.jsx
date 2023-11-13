@@ -7,6 +7,7 @@ function Modal({ modalTogg, setModaltogg, data }) {
     setTimeout(() => {
       setModaltogg(false);
     }, 30000);
+  console.log("modal", data);
 
   return (
     <div className="Modal">

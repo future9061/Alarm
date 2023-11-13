@@ -15,10 +15,11 @@ function Alarm() {
     const timing = [];
     localData.map((a) => {
       const date = new Date();
-      const now = date.getTime();
+      const now = date.getTime() + 9 * 60 * 60 * 1000;
+
       timing.push(a - now);
       timing.sort((a, b) => a - b);
-      console.log(timing, synch);
+
       if (localData.length !== 0) {
         setTimeout(() => {
           setSynch(true);

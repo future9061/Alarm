@@ -11,18 +11,22 @@ function Buttons({ hours, minutes, digit }) {
     } else if (digit === "am" && hours === 12) {
       hours = 24;
     }
-    const date = new Date();
-    date.setHours(hours);
-    date.setMinutes(minutes);
-    date.setSeconds(0);
-    const timestamp = date.getTime();
 
     if ((!hours && hours !== 0) || (!minutes && minutes !== 0)) {
       alert("시간을 선택해주세요");
       return;
     }
 
-    const now = new Date().getTime();
+    //현재 시간 한국 기준으로 구하기
+    const now = new Date().getTime() + 9 * 60 * 60 * 1000;
+
+    //알람 시간 한국 기준으로 구하기
+    const date = new Date();
+    date.getTime();
+    date.setHours(hours);
+    date.setMinutes(minutes);
+    date.setSeconds(0);
+    const timestamp = date.getTime() + 9 * 60 * 60 * 1000;
 
     if (timestamp < now) {
       alert("이미 지난 시간입니다");
@@ -32,7 +36,7 @@ function Buttons({ hours, minutes, digit }) {
 
     const data = JSON.parse(alarm);
 
-    const overlapping = data.some((a, i) => {
+    const overlapping = data.some((a, _) => {
       const localTime = new Date(a);
       const userTime = new Date(timestamp);
 
