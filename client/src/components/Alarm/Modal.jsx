@@ -8,7 +8,7 @@ function Modal({ modalTogg, setModaltogg, data }) {
       setModaltogg(false);
     }, 30000);
 
-  const modalData = new Date(data.timestamp);
+  const modalData = new Date(data.timestamp - 9 * 60 * 60 * 1000);
   const modalObj = {
     hours: modalData.getHours(),
     minutes: modalData.getMinutes(),
