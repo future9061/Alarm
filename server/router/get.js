@@ -33,6 +33,7 @@ router.get("/alarm/modal", (req, res) => {
   serverDate.getTime() + 9 * 60 * 60 * 1000
 
   const resTime = {
+    timestamp: serverDate.getTime() + 9 * 60 * 60 * 1000,
     hours: ("0" + serverDate.getHours()).slice(-2),
     minute: ("0" + serverDate.getMinutes()).slice(-2),
   }

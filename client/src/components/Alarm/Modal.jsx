@@ -7,7 +7,12 @@ function Modal({ modalTogg, setModaltogg, data }) {
     setTimeout(() => {
       setModaltogg(false);
     }, 30000);
-  console.log("modal", data);
+
+  const modalData = new Date(data.timestamp);
+  const modalObj = {
+    hours: modalData.getHours(),
+    minutes: modalData.getMinutes(),
+  };
 
   return (
     <div className="Modal">
@@ -20,7 +25,8 @@ function Modal({ modalTogg, setModaltogg, data }) {
       <div className="inner">
         <h3>⏰</h3>
         <p>
-          <span>{data.hours}</span>시 <span>{data.minute}</span>분이 되었습니다!
+          <span>{modalObj.hours}</span>시 <span>{modalObj.minutes}</span>분이
+          되었습니다!
         </p>
         <p>해당 알림은 30초뒤 자동으로 사라져요!</p>
       </div>

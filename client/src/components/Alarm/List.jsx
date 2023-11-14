@@ -19,7 +19,8 @@ function List({ modalTogg }) {
     <ul className="List">
       {filterData.length !== 0 ? (
         filterData.map((a, i) => {
-          const date = new Date(a);
+          const date = new Date(a - 9 * 60 * 60 * 1000);
+
           const obj = {
             year: new Date(a).getFullYear(),
             month: ("0" + (date.getMonth() + 1)).slice(-2),
