@@ -88,7 +88,7 @@
 ## ❗ 개발 환경
 
 - **Editor** : `vs code 1.77`
-- **client** : `react(18.2.0)` `react-router-dom(6.17.0)` `sass(1.69.4)` `http-proxy-middleware(2.0.6)`
+- **client** : `react(18.2.0)` `react-query(5.0.0)` `react-router-dom(6.17.0)` `sass(1.69.4)` `http-proxy-middleware(2.0.6)`
 - **server** : `express(4.18.2)` `nodemon(3.0.1)` `path(0.12.7)`
 - **cloud computing service** : `AWS(EC2)`
 
